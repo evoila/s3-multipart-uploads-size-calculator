@@ -23,7 +23,7 @@ This Python script calculates the total size of all aborted multipart uploads in
 To run the script, use the following command:
 
 ```bash
-python multipart-size.py --bucket your-bucket-name --profile your-profile-name
+python calculate_multipart_uploads_size.py --bucket your-bucket-name --profile your-profile-name
 ```
 
 Replace `your-bucket-name` with the name of your S3 bucket and `your-profile-name` with the name of the AWS profile you wish to use.
