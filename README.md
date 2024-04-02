@@ -1,4 +1,4 @@
-# S3 Aborted Multipart Uploads Size Calculator
+# S3 Multipart Uploads Size Calculator
 
 This Python script calculates the total size of all aborted multipart uploads in a specified AWS S3 bucket. It uses the `boto3` library to interact with the AWS S3 service and `argparse` for command-line argument parsing.
 
