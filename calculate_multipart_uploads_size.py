@@ -14,19 +14,17 @@ def calculate_aborted_multipart_uploads_size(
 
     for page in paginator.paginate(Bucket=bucket_name):
         for upload in page.get("Uploads", []):
-            if upload["State"] == "aborted":
-                upload_id = upload["UploadId"]
-                key = upload["Key"]
+            upload_id = upload["UploadId"]
+            key = upload["Key"]
 
-                parts_paginator = s3.get_paginator("list_parts")
-                for parts_page in parts_paginator.paginate(
-                    Bucket=bucket_name, Key=key, UploadId=upload_id
-                ):
-                    for part in parts_page.get("Parts", []):
-                        total_size += part["Size"]
+            parts_paginator = s3.get_paginator("list_parts")
+            for parts_page in parts_paginator.paginate(
+                Bucket=bucket_name, Key=key, UploadId=upload_id
+            ):
+                for part in parts_page.get("Parts", []):
+                    total_size += part["Size"]
 
     return total_size
-
 
 def convert_bytes(size: int) -> str:
     for x in ["bytes", "KB", "MB", "GB", "TB"]:
